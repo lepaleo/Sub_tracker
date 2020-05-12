@@ -1,0 +1,2 @@
+rootProject.name='Sub_tracker'
+include ':app'
