@@ -13,8 +13,8 @@
             android:name=".Homepage"
             android:label="@string/title_activity_homepage"
             android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".HomeActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".Welcomepage" />
+        <activity android:name=".Loginpage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

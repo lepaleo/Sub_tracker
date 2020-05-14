@@ -10,7 +10,7 @@
     android:paddingRight="16dp"
     android:paddingTop="16dp"
     android:background="#fff"
-    tools:context=".MainActivity">
+    tools:context=".Welcomepage">
 
     <TextView
         android:id="@+id/textView2"

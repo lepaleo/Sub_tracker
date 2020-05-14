@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeActivity">
+    tools:context=".Loginpage">
 
 
     <EditText
@@ -35,7 +35,7 @@
         android:id="@+id/Insert"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Insert your name"
+        android:text="Let's enter your name first"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintBottom_toTopOf="@+id/Username"
         app:layout_constraintEnd_toEndOf="parent"
