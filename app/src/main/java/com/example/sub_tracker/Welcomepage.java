@@ -10,21 +10,12 @@ import android.widget.TextView;
 import org.w3c.dom.Text;
 
 public class Welcomepage extends AppCompatActivity {
-    private static int SPLASH_TIME_OUT=4000;
+    private static int SPLASH_TIME_OUT=2500;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcomepage);
-        new Handler().postDelayed(new Runnable(){
-            @Override
-            public void run(){
-                Intent homeIntent = new Intent(Welcomepage.this, Loginpage.class);
-                startActivity(homeIntent);
-                finish();
-            }
-        },SPLASH_TIME_OUT);
-
         Bundle extras = getIntent().getExtras();
         if (extras != null){
             TextView textView2 = (TextView) findViewById(R.id.textView2);
@@ -32,9 +23,17 @@ public class Welcomepage extends AppCompatActivity {
             textView2.setText("WELCOME " + value);
         }
 
-    }
-    public void GoToHomepage(){
-        Intent intent=new Intent(this,Homepage.class);
-        startActivity(intent);
+        // Intent to go to the next activity with a splash timeout
+        new Handler().postDelayed(new Runnable(){
+            @Override
+            public void run(){
+                Intent homepageIntent = new Intent(Welcomepage.this, Homepage.class);
+                startActivity(homepageIntent);
+                finish();
+            }
+        },SPLASH_TIME_OUT);
+
+
+
     }
 }
