@@ -12,13 +12,24 @@
         android:icon="@drawable/ic_search_black_24dp"
         android:title="Search"/>
 
+
+
+
     <item
         android:id="@+id/nav_sub"
         android:enabled="true"
-        android:icon="@drawable/ic_subscriptions_black_24dp"
+        android:icon="@drawable/ic_collections_black_24dp"
         android:title="Subs"
 
         />
+
+    <item
+        android:id="@+id/nav_settings"
+        android:enabled="true"
+        android:icon="@drawable/ic_settings_black_24dp"
+        android:title="Settings"/>
+
+
 
 
 
