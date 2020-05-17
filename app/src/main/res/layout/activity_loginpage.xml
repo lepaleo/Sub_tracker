@@ -4,16 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FF3F249E"
     tools:context=".Loginpage">
 
 
     <EditText
         android:id="@+id/Username"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="364dp"
+        android:layout_width="169dp"
+        android:layout_height="44dp"
+        android:layout_marginBottom="360dp"
+        android:drawableLeft="@drawable/ic_login_person_24dp"
         android:ems="10"
-        android:hint="Username"
+        android:gravity="center"
+        android:hint="Username   "
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,16 +24,20 @@
 
     <Button
         android:id="@+id/login_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="101dp"
+        android:layout_height="38dp"
         android:layout_marginBottom="260dp"
-        android:text="Proceed"
+        android:background="@drawable/proceed_rounded_button"
         android:enabled="false"
+        android:text="Proceed"
+        android:textAllCaps="true"
+        android:drawableRight="@drawable/ic_arrow_forward_black_24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.832"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Username" />
+        app:layout_constraintTop_toBottomOf="@+id/Username"
+        app:layout_constraintVertical_bias="0.515" />
 
     <TextView
         android:id="@+id/Insert"

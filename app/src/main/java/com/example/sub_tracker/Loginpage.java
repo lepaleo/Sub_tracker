@@ -1,13 +1,17 @@
 package com.example.sub_tracker;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -17,15 +21,27 @@ public class Loginpage extends AppCompatActivity {
     public String Username2;
     private Button Proceed_button;
 
-    //Boolean firstTime = true;
+    //Boolean firstTime = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loginpage);
+
+        if (Build.VERSION.SDK_INT >= 21) {
+            Window window = getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            window.setStatusBarColor(getResources().getColor(R.color.mainApp_color));
+        }
+
+        /*Window window = Loginpage.this.getWindow();
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        window.setStatusBarColor(ContextCompat.getColor(Loginpage.this, R.color.colorAccent));*/
+
         Username=(TextView)findViewById(R.id.Username);
         Proceed_button = (Button)findViewById(R.id.login_button);
-
 
         Username.addTextChangedListener(loginTextWatcher);
 
@@ -61,6 +77,7 @@ public class Loginpage extends AppCompatActivity {
         intent.putExtra("userkey",Username2);
         startActivity(intent);
         finish();
+        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
     }
 
 
