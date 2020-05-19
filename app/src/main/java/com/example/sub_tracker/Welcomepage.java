@@ -15,6 +15,7 @@ import org.w3c.dom.Text;
 
 public class Welcomepage extends AppCompatActivity {
     private static int SPLASH_TIME_OUT=2500;
+    String value;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +37,7 @@ public class Welcomepage extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         if (extras != null){
             TextView textView2 = (TextView) findViewById(R.id.textView2);
-            String value = extras.getString("userkey");
+            value = extras.getString("userkey");
             textView2.setText("WELCOME\n\n" + value);
         }
 
@@ -51,4 +52,6 @@ public class Welcomepage extends AppCompatActivity {
             }
         },SPLASH_TIME_OUT);
     }
+
+
 }

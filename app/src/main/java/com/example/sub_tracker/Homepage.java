@@ -17,6 +17,7 @@ public class Homepage extends AppCompatActivity {
     final Fragment frag3=new SubsFrag();
     final Fragment frag4=new SettingsFrag();
     Fragment active = frag1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +29,9 @@ public class Homepage extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction().add(R.id.frag_contain,frag1,"1").commit();
         BottomNavigationView bottom_nav =findViewById(R.id.bottom_nav_bar);
         bottom_nav.setOnNavigationItemSelectedListener(nav_listener);
+
+
+
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener nav_listener =
@@ -58,4 +62,5 @@ public class Homepage extends AppCompatActivity {
                     return false;
                 }
             };
+
 }
