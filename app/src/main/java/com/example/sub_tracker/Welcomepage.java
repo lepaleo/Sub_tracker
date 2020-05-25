@@ -29,16 +29,11 @@ public class Welcomepage extends AppCompatActivity {
             window.setStatusBarColor(getResources().getColor(R.color.mainApp_color));
         }
 
-        /*Window window = Welcomepage.this.getWindow();
-        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        window.setStatusBarColor(ContextCompat.getColor(Welcomepage.this, R.color.colorAccent));*/
-
         Bundle extras = getIntent().getExtras();
         if (extras != null){
             TextView textView2 = (TextView) findViewById(R.id.textView2);
             value = extras.getString("userkey");
-            textView2.setText("WELCOME\n\n" + value);
+            textView2.setText("WELCOME\n" + value);
         }
 
         // Intent to go to the next activity with a splash timeout

@@ -9,8 +9,28 @@
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
     android:paddingTop="16dp"
-    android:background="#3F249E"
+    android:background="@drawable/login_background"
     tools:context=".Welcomepage">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="213dp"
+        android:layout_height="144dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="106dp"
+        android:layout_marginLeft="106dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="108dp"
+        android:layout_marginRight="108dp"
+        android:layout_marginBottom="511dp"
+        app:srcCompat="@drawable/appicon"
+        tools:layout_editor_absoluteX="144dp"
+        tools:layout_editor_absoluteY="27dp" />
 
     <TextView
         android:id="@+id/textView2"
@@ -18,23 +38,11 @@
         android:layout_height="wrap_content"
         android:text="WELCOME"
         android:gravity="center"
-        android:textColor="#4C4C4C"
+        android:textColor="#000000"
         android:textSize="40sp"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
          />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/textView2"
-        android:layout_centerInParent="true"
-        android:layout_marginBottom="30dp"
-
-        android:text="SUB-Tracker"
-        android:textColor="#ff0000"
-        android:textSize="50sp" />
 
     <TextView
         android:id="@+id/textView3"
@@ -53,5 +61,25 @@
         android:layout_below="@+id/textView2"
         android:layout_centerInParent="true"
         android:layout_marginTop="32dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="99dp"
+
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="127dp"
+        android:layout_marginBottom="417dp"
+        android:text="SUB Tracker"
+        android:textColor="#F2FF2F00"
+        android:textSize="50sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.148" />
 
 </RelativeLayout>
