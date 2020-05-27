@@ -94,7 +94,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return sub;
     }
 
-    //Μέθοδος για διαγραφή προιόντος βάσει ονομασίας του
+    //Delete from DB
     public boolean deleteSub(String Subname) {
         boolean result = false;
         String query = "SELECT * FROM " + TABLE_NAME + " WHERE " +
