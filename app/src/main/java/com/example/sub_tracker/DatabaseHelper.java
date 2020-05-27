@@ -13,7 +13,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME = "subsDB.db";
     public static final String TABLE_NAME = "subs_table";
-    public static final String USERNAME = "Username";
     public static final String SUBNAME = "Subname";
     public static final String ID = "ID";
     public static final String PRICE = "Price";
@@ -33,7 +32,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 TABLE_NAME + "(" +
                 ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                 SUBNAME + "TEXT," +
-                USERNAME + " TEXT," +
                 PRICE + " INTEGER," +
                 EMAIL + " TEXT," +
                 CARD + " TEXT," +
@@ -47,19 +45,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    /*Adding to the DB
-    public void addUsername(Sub sub){
-        ContentValues values = new ContentValues();
-        values.put(USERNAME, sub.getUsername());
-        SQLiteDatabase db = this.getWritableDatabase();
-        db.insert(TABLE_NAME, null, values);
-        db.close();
-    }*/
-
+    //Adding to the DB
     public void addSub(Sub sub) {
         ContentValues values = new ContentValues();
         values.put(SUBNAME, sub.getSubname());
-        values.put(USERNAME, sub.getUsername());
         values.put(PRICE, sub.getPrice());
         values.put(EMAIL, sub.getEmail());
         values.put(CARD, sub.getCard());

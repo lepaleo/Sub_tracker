@@ -3,7 +3,6 @@ package com.example.sub_tracker;
 public class Sub {
     private int _id;
     private String _subname;
-    private String _username;
     private int _price;
     private String _email;
     private String _card;
@@ -13,10 +12,9 @@ public class Sub {
     public Sub() {
     }
 
-    public Sub(int id, String subname, String username, int price, String email, String card, String startdate, String enddate) {
+    public Sub(int id, String subname, int price, String email, String card, String startdate, String enddate) {
         this._id = id;
         this._subname = subname;
-        this._username = username;
         this._price = price;
         this._email = email;
         this._card = card;
@@ -24,9 +22,8 @@ public class Sub {
         this._enddate = enddate;
     }
 
-    public Sub(String subname, String username, int price, String email, String card, String startdate, String enddate) {
+    public Sub(String subname, int price, String email, String card, String startdate, String enddate) {
         this._subname = subname;
-        this._username = username;
         this._price = price;
         this._email = email;
         this._card = card;
@@ -48,14 +45,6 @@ public class Sub {
 
     public String getSubname() {
         return this._subname;
-    }
-
-    public void setUsername(String username) {
-        this._username = username;
-    }
-
-    public String getUsername() {
-        return this._username;
     }
 
     public void setPrice(int price) {

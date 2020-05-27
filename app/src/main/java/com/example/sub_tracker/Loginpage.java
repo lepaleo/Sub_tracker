@@ -88,7 +88,4 @@ public class Loginpage extends AppCompatActivity {
         editor.putBoolean("firststart",false);
         editor.apply();*/
     }
-
-
-
 }
