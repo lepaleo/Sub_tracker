@@ -3,6 +3,7 @@ package com.example.sub_tracker;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
@@ -27,6 +28,7 @@ public class Loginpage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loginpage);
+
         //change notificaton bar color
         if (Build.VERSION.SDK_INT >= 21) {
             Window window = getWindow();
@@ -35,19 +37,26 @@ public class Loginpage extends AppCompatActivity {
             window.setStatusBarColor(getResources().getColor(R.color.mainApp_color));
         }
 
-        Username=(TextView)findViewById(R.id.Username);
-        Proceed_button = (Button)findViewById(R.id.login_button);
+        SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
+        boolean firststart = prefs.getBoolean("firststart",true);
 
-        Username.addTextChangedListener(loginTextWatcher);
+        //if(firststart) {
+            //System.out.println(firststart);
 
-        Proceed_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Username2=Username.getText().toString();
-                GoToWelcomepage();
-            }
-        });
+            //save the entered username
+            Username = (TextView) findViewById(R.id.Username);
+            Proceed_button = (Button) findViewById(R.id.login_button);
 
+            Username.addTextChangedListener(loginTextWatcher);
+
+            Proceed_button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Username2 = Username.getText().toString();
+                    GoToWelcomepage();
+                }
+            });
+        //}
     }
 
     // Enables "PROCEED" button if user has input a name
@@ -73,6 +82,11 @@ public class Loginpage extends AppCompatActivity {
         startActivity(intent);
         finish();
         overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
+
+        /*SharedPreferences prefs = getSharedPreferences("prefs",MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putBoolean("firststart",false);
+        editor.apply();*/
     }
 
 
