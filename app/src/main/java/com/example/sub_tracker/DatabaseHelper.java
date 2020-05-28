@@ -34,8 +34,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 PRICE + " INTEGER," +
                 EMAIL + " TEXT," +
                 CARD + " TEXT," +
-                STARTDATE + " DATE," +
-                ENDDATE + " DATE)" + ")";
+                STARTDATE + " TEXT," +
+                ENDDATE + " TEXT)" + ")";
         db.execSQL(createTable);
     }
     @Override
