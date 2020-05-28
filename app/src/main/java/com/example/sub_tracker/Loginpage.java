@@ -17,12 +17,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
 public class Loginpage extends AppCompatActivity {
-    TextView Username;
+    public EditText Username;
     public String Username2;
     private Button Proceed_button;
+    public static final String FILE_NAME = "username.txt";
 
-    //Boolean firstTime = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,14 +41,12 @@ public class Loginpage extends AppCompatActivity {
             window.setStatusBarColor(getResources().getColor(R.color.mainApp_color));
         }
 
-        SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
-        boolean firststart = prefs.getBoolean("firststart",true);
+        //final Username use = new Username();
 
-        //if(firststart) {
-            //System.out.println(firststart);
+        //if(use.getUsername() == null) {
 
             //save the entered username
-            Username = (TextView) findViewById(R.id.Username);
+            Username = (EditText) findViewById(R.id.Username);
             Proceed_button = (Button) findViewById(R.id.login_button);
 
             Username.addTextChangedListener(loginTextWatcher);
@@ -53,11 +55,35 @@ public class Loginpage extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     Username2 = Username.getText().toString();
+                    FileOutputStream fos = null;
+
+                    Username.getText().clear();
+
+                    try {
+                        fos = openFileOutput(FILE_NAME,MODE_PRIVATE);
+                        fos.write(Username2.getBytes());
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } finally {
+                        if (fos != null){
+                            try {
+                                fos.close();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+
                     GoToWelcomepage();
                 }
             });
+        }
+        //else{
+            //GoToWelcomepage();
         //}
-    }
+    //}
 
     // Enables "PROCEED" button if user has input a name
     private TextWatcher loginTextWatcher = new TextWatcher() {

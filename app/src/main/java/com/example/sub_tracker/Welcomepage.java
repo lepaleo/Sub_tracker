@@ -33,7 +33,8 @@ public class Welcomepage extends AppCompatActivity {
         if (extras != null){
             TextView textView2 = (TextView) findViewById(R.id.textView2);
             value = extras.getString("userkey");
-            textView2.setText("WELCOME\n" + value);
+            Username use1 = new Username();
+            textView2.setText("WELCOME\n" + use1.getUsername());
         }
 
         // Intent to go to the next activity with a splash timeout

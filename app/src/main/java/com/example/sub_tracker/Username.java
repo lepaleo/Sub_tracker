@@ -17,4 +17,5 @@ public class Username {
     public String getUsername() {
         return this._username;
     }
+
 }

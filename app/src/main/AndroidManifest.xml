@@ -9,9 +9,14 @@
         android:roundIcon="@mipmap/appicon_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Homepage"></activity>
-        <activity android:name=".Welcomepage" android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".Loginpage" android:theme="@style/AppTheme.NoActionBar">
+        <activity android:name=".AddSubscription"></activity>
+        <activity android:name=".Homepage" />
+        <activity
+            android:name=".Welcomepage"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Loginpage"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
