@@ -22,11 +22,19 @@
         >
 
 
+        <Switch
+            android:id="@+id/switch_Icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Change"
+            android:layout_toRightOf="@+id/Profile_pic"
+            android:layout_centerVertical="true"
+            />
+
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/Profile_pic"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:src="@drawable/user_icon_pic"
             app:civ_border_color="@color/colorPrimaryDark"
             app:civ_border_overlay="true"
             app:civ_border_width="2dp"

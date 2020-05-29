@@ -12,6 +12,8 @@
         <activity android:name=".Calendar"></activity>
         <activity android:name=".AddSubscription" />
         <activity android:name=".Homepage" />
+        <activity android:name=".Pop" android:theme="@style/AppTheme.CustomTheme"></activity>
+        <activity android:name=".Notification_view"></activity>
         <activity
             android:name=".Welcomepage"
             android:theme="@style/AppTheme.NoActionBar" />
