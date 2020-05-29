@@ -10,6 +10,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class AddSubscription extends AppCompatActivity {
 
@@ -22,6 +23,8 @@ public class AddSubscription extends AppCompatActivity {
     private Button pickcolorButton;
     private Button startdateButton;
     private Button enddateButton;
+TextView StartDate;
+TextView EndDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +42,7 @@ public class AddSubscription extends AppCompatActivity {
         startdateButton = findViewById(R.id.startdatebutton);
         enddateButton = findViewById(R.id.enddatebutton);
 
-
+        //backbutton back to home onclick
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,12 +53,33 @@ public class AddSubscription extends AppCompatActivity {
             }
         });
 
+
+
+
+
+        Intent incomingStartDate = getIntent();
+        String startdate = incomingStartDate.getStringExtra("date");
+
         startdateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(AddSubscription.this, Calendar.class);
+                startActivity(intent);
             }
         });
+
+        Intent incomingEndDate = getIntent();
+        String Enddate = incomingEndDate.getStringExtra("date");
+
+        enddateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AddSubscription.this, Calendar.class);
+                startActivity(intent);
+            }
+        });
+
+
 
         //change notificaton bar color
         if (Build.VERSION.SDK_INT >= 21) {
