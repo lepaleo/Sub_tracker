@@ -1,9 +1,12 @@
 package com.example.sub_tracker;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CalendarView;
 import androidx.annotation.NonNull;
@@ -31,7 +34,7 @@ public class Calendar extends AppCompatActivity {
                 Intent backactivity = new Intent(Calendar.this, AddSubscription.class);
                 startActivity(backactivity);
                 finish();
-                overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
+                //overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
             }
         });
 
@@ -46,5 +49,14 @@ public class Calendar extends AppCompatActivity {
                 finish();
             }
         });
+
+        //change notificaton bar color
+        if (Build.VERSION.SDK_INT >= 21) {
+            Window window = getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            window.setStatusBarColor(getResources().getColor(R.color.mainApp_color));
+        }
+
     }
 }

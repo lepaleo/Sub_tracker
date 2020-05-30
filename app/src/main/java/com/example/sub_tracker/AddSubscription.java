@@ -65,6 +65,7 @@ TextView EndDate;
             public void onClick(View v) {
                 Intent intent = new Intent(AddSubscription.this, Calendar.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -76,6 +77,7 @@ TextView EndDate;
             public void onClick(View v) {
                 Intent intent = new Intent(AddSubscription.this, Calendar.class);
                 startActivity(intent);
+                finish();
             }
         });
 
