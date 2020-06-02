@@ -34,10 +34,11 @@ public class Calendar extends AppCompatActivity {
                 Intent backactivity = new Intent(Calendar.this, AddSubscription.class);
                 startActivity(backactivity);
                 finish();
-                //overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
+                overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
             }
         });
 
+        //pick date
         mCalendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {

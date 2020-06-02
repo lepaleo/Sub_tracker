@@ -9,11 +9,15 @@
         android:roundIcon="@mipmap/appicon_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Calendar"></activity>
+        <activity android:name=".EditSubscription"></activity>
+        <activity android:name=".SubOverview" />
+        <activity android:name=".Calendar" />
         <activity android:name=".AddSubscription" />
         <activity android:name=".Homepage" />
-        <activity android:name=".Pop" android:theme="@style/AppTheme.CustomTheme"></activity>
-        <activity android:name=".Notification_view"></activity>
+        <activity
+            android:name=".Pop"
+            android:theme="@style/AppTheme.CustomTheme" />
+        <activity android:name=".Notification_view" />
         <activity
             android:name=".Welcomepage"
             android:theme="@style/AppTheme.NoActionBar" />

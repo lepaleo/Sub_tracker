@@ -23,6 +23,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginLeft="5dp"
         android:background="@drawable/ic_arrow_back_black_24dp"
+        android:foreground="?attr/selectableItemBackground"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.02"
         app:layout_constraintStart_toStartOf="parent"

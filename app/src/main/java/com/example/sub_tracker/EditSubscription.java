@@ -2,21 +2,20 @@ package com.example.sub_tracker;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
-import android.app.ActivityOptions;
+
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import yuku.ambilwarna.AmbilWarnaDialog;
 
-public class AddSubscription extends AppCompatActivity {
+public class EditSubscription extends AppCompatActivity {
 
     private EditText subname;
     private EditText subprice;
@@ -51,7 +50,7 @@ public class AddSubscription extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent backactivity = new Intent(AddSubscription.this, Homepage.class);
+                Intent backactivity = new Intent(EditSubscription.this, SubOverview.class);
                 startActivity(backactivity);
                 finish();
                 overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
@@ -60,7 +59,7 @@ public class AddSubscription extends AppCompatActivity {
 
 
         //pick color button
-        mDefaultColor = ContextCompat.getColor(AddSubscription.this, R.color.colorPrimary);
+        mDefaultColor = ContextCompat.getColor(EditSubscription.this, R.color.colorPrimary);
         pickcolorButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,7 +75,7 @@ public class AddSubscription extends AppCompatActivity {
         startdateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AddSubscription.this, Calendar.class);
+                Intent intent = new Intent(EditSubscription.this, Calendar.class);
                 startActivity(intent);
                 finish();
             }
@@ -89,7 +88,7 @@ public class AddSubscription extends AppCompatActivity {
         enddateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AddSubscription.this, Calendar.class);
+                Intent intent = new Intent(EditSubscription.this, Calendar.class);
                 startActivity(intent);
                 finish();
             }
@@ -102,7 +101,7 @@ public class AddSubscription extends AppCompatActivity {
             public void onClick(View v) {
                 //clickable only if name and price are filled
                 //save db
-                Intent intent = new Intent(AddSubscription.this, Homepage.class);
+                Intent intent = new Intent(EditSubscription.this, SubOverview.class);
                 startActivity(intent);
                 finish();
             }
@@ -133,5 +132,4 @@ public class AddSubscription extends AppCompatActivity {
         });
         colorPicker.show();
     }
-
 }
