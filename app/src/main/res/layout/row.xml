@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:padding="16dp"
     >
 
     <ImageView
@@ -21,7 +20,7 @@
 
         <TextView
             android:id="@+id/Maintext_list"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Sub Name"
             android:textColor="#000"
@@ -31,7 +30,7 @@
             />
         <TextView
             android:id="@+id/Subtext_list"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="hh/mm/ss"
             android:layout_margin="5dp"
@@ -39,10 +38,14 @@
             />
 
         <ImageView
+            android:id="@+id/star_mark"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:src="@drawable/ic_star_black_24dp"
             />
 
+
     </LinearLayout>
+
+
 </LinearLayout>

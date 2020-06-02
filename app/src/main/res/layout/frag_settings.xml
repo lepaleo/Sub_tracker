@@ -20,15 +20,13 @@
         app:layout_constraintVertical_bias="0.499"
         android:background="@drawable/gradient_background"
         >
-
-
-        <Switch
-            android:id="@+id/switch_Icon"
+        <TextView
+            android:id="@+id/Text_choose_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Change"
-            android:layout_toRightOf="@+id/Profile_pic"
+            android:text="Choose your icon->"
             android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
             />
 
         <de.hdodenhof.circleimageview.CircleImageView
@@ -74,6 +72,7 @@
         app:layout_constraintVertical_bias="0.232">
 
         <TextView
+            android:id="@+id/Change_name_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"

@@ -26,12 +26,14 @@ public class Loginpage extends AppCompatActivity {
     public String Username2;
     private Button Proceed_button;
     public static final String FILE_NAME = "username.txt";
+    static  Loginpage obj;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loginpage);
+        obj=this;
 
         //change notificaton bar color
         if (Build.VERSION.SDK_INT >= 21) {
@@ -113,5 +115,9 @@ public class Loginpage extends AppCompatActivity {
         SharedPreferences.Editor editor = prefs.edit();
         editor.putBoolean("firststart",false);
         editor.apply();*/
+    }
+
+    public static Loginpage getInstance(){
+        return obj;
     }
 }

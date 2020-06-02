@@ -12,13 +12,16 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
+
 class Myadapter extends ArrayAdapter<String> {
     Context context;
-    String rTitle[];
-    String rDescription[];
-    int rImgs[];
+    ArrayList<String> rTitle;
+    ArrayList<String> rDescription;
+    ArrayList<Integer> rImgs;
 
-    Myadapter(Context c,String title[],String description[],int imgs[]){
+
+    Myadapter(Context c,ArrayList<String> title,ArrayList<String> description,ArrayList<Integer> imgs){
         super(c,R.layout.row,R.id.Maintext_list,title);
         this.context=c;
         this.rTitle=title;
@@ -37,9 +40,9 @@ class Myadapter extends ArrayAdapter<String> {
         TextView myDescription=row.findViewById(R.id.Subtext_list);
 
 
-        images.setImageResource(rImgs[position]);
-        mytitle.setText(rTitle[position]);
-        myDescription.setText(rDescription[position]);
+        images.setImageResource(rImgs.get(position));
+        mytitle.setText(rTitle.get(position));
+        myDescription.setText(rDescription.get(position));
         return row;
     }
 }

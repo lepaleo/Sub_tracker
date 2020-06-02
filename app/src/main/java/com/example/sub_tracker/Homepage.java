@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.content.res.ColorStateList;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -17,18 +18,22 @@ public class Homepage extends AppCompatActivity {
     final Fragment frag2=new NotificationsFrag();
     final Fragment frag3=new SettingsFrag();
     Fragment active = frag1;
+    private BottomNavigationView bottom_nav;
+    static Homepage obj;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homepage2);
+        obj=this;
 
 
         getSupportFragmentManager().beginTransaction().add(R.id.frag_contain,frag3,"3").hide(frag3).commit();
         getSupportFragmentManager().beginTransaction().add(R.id.frag_contain,frag2,"2").hide(frag2).commit();
         getSupportFragmentManager().beginTransaction().add(R.id.frag_contain,frag1,"1").commit();
-        BottomNavigationView bottom_nav =findViewById(R.id.bottom_nav_bar);
+        bottom_nav =findViewById(R.id.bottom_nav_bar);
         bottom_nav.setOnNavigationItemSelectedListener(nav_listener);
+
 
         //change notificaton bar color
         if (Build.VERSION.SDK_INT >= 21) {
@@ -38,6 +43,14 @@ public class Homepage extends AppCompatActivity {
             window.setStatusBarColor(getResources().getColor(R.color.mainApp_color));
         }
 
+    }
+
+    public void change_color(){
+
+    }
+
+    public static Homepage getInstance(){
+        return obj;
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener nav_listener =

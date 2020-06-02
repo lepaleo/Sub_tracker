@@ -4,40 +4,28 @@
     android:layout_height="match_parent"
     android:background="@drawable/gradient_background">
 
-
-    <ListView
-        android:layout_width="375dp"
-        android:layout_height="403dp"
-        android:layout_above="@+id/addsubbutton"
-        android:layout_below="@+id/textView5"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginStart="18dp"
-        android:layout_marginLeft="18dp"
-        android:layout_marginTop="65dp"
-        android:layout_marginEnd="18dp"
-        android:layout_marginRight="18dp"
-        android:layout_marginBottom="4dp" />
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/textView5"
-        android:layout_width="308dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="11dp"
-        android:layout_marginEnd="93dp"
-        android:layout_marginRight="93dp"
         android:text="My Subscriptions"
         android:textColor="@android:color/white"
         android:textSize="30dp" />
+
+    <ListView
+        android:id="@+id/List_view_subs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+</LinearLayout>
+
+
+
 
     <Button
         android:id="@+id/addsubbutton"

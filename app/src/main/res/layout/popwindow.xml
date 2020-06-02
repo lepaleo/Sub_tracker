@@ -10,12 +10,14 @@
         android:id="@+id/switch1"
         android:layout_width="match_parent"
         android:layout_height="90dp"
+        android:paddingLeft="15dp"
         android:text="Turn off Not/cations" />
 
     <Switch
         android:id="@+id/switch2"
         android:layout_width="match_parent"
         android:layout_height="90dp"
+        android:paddingLeft="15dp"
         android:text="Dark mode"
         android:layout_marginBottom="40dp"
         />
@@ -28,7 +30,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="Change your Profile Picture"
+            android:text="Pick an icon"
+            android:paddingLeft="15dp"
             android:textSize="15sp"
             android:textStyle="bold"
             />
@@ -42,7 +45,22 @@
             />
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/Rating_logo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="100dp"
+        android:text="Rate our app:"
+        android:textSize="20sp"/>
 
+    <RatingBar
+        android:id="@+id/ratingBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        android:stepSize="0.5"
+        />
 
 
 </LinearLayout>

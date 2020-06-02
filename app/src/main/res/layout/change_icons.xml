@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffff"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/gradient_background"
+            >
+            <TextView
+                android:id="@+id/Choose_icon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Choose an icon:"
+                android:textSize="25sp"
+                />
+
+            <ImageView
+                android:id="@+id/Icon_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/user_icon_pic"
+                />
+
+            <ImageView
+                android:id="@+id/Icon_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/user_icon_pic_1"
+                />
+
+            <ImageView
+                android:id="@+id/Icon_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/user_icon_pic_2"
+                />
+
+            <ImageView
+                android:id="@+id/Icon_4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/user_icon_pic"
+                />
+
+            <ImageView
+                android:id="@+id/Icon_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/user_icon_pic_4"
+                />
+
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

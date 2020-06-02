@@ -34,7 +34,7 @@ public class Welcomepage extends AppCompatActivity {
             TextView textView2 = (TextView) findViewById(R.id.textView2);
             value = extras.getString("userkey");
             Username use1 = new Username();
-            textView2.setText("WELCOME\n" + use1.getUsername());
+            textView2.setText("WELCOME\n" + Loginpage.getInstance().Username2);
         }
 
         // Intent to go to the next activity with a splash timeout
