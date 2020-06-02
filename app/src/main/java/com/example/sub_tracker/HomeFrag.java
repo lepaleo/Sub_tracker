@@ -1,5 +1,6 @@
 package com.example.sub_tracker;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -33,6 +34,7 @@ public class HomeFrag extends Fragment {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getActivity(),AddSubscription.class));
+                getActivity().finish();
             }
         });
 

@@ -94,7 +94,10 @@
             android:layout_width="170dp"
             android:layout_height="45dp"
             android:layout_above="@+id/Change_name_button"
-            android:layout_centerHorizontal="true"/>
+            android:layout_centerHorizontal="true"
+            android:inputType="textCapSentences"
+            android:gravity="center"
+            />
 
 
 
