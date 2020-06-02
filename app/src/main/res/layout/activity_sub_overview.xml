@@ -72,7 +72,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.572" />
 
-    <EditText
+    <TextView
         android:id="@+id/Subprice"
         android:layout_width="fill_parent"
         android:layout_height="110dp"
@@ -112,7 +112,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.826" />
 
-    <EditText
+    <TextView
         android:id="@+id/Subemail"
         android:layout_width="fill_parent"
         android:layout_height="60dp"
@@ -152,7 +152,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.864" />
 
-    <EditText
+    <TextView
         android:id="@+id/Subcard"
         android:layout_width="fill_parent"
         android:layout_height="60dp"
@@ -192,7 +192,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.864" />
 
-        <EditText
+        <TextView
             android:id="@+id/Startdate"
             android:layout_width="fill_parent"
             android:layout_height="60dp"
@@ -232,7 +232,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.864" />
 
-        <EditText
+        <TextView
             android:id="@+id/Enddate"
             android:layout_width="fill_parent"
             android:layout_height="60dp"
