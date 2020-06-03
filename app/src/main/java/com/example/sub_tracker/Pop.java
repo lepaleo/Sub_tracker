@@ -3,6 +3,7 @@ package com.example.sub_tracker;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -24,15 +25,23 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class Pop extends AppCompatActivity  {
 
+    static final String SHARED_PREFS="sharedPrefs";
+    static final String ASWITCH="switch1";
+    Switch aSwitch;
+    Switch bSwitch;
+    private boolean switchonoff;
+    static Pop object3;
+
     @Override
-    protected void onCreate( Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.popwindow);
-        Switch aSwitch=(Switch) findViewById(R.id.switch1) ;
-        Switch bSwitch=(Switch) findViewById(R.id.switch2) ;
+        aSwitch=(Switch) findViewById(R.id.switch1) ;
+        bSwitch=(Switch) findViewById(R.id.switch2) ;
         Button button=(Button)findViewById(R.id.button);
         RatingBar ratingBar=(RatingBar)findViewById(R.id.ratingBar);
         final TextView textView=(TextView)findViewById(R.id.Rating_logo);
+        object3=this;
 
         final Context context=getApplicationContext();
 
@@ -49,16 +58,18 @@ public class Pop extends AppCompatActivity  {
         });
 
 
+
         aSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked){
                     Toast toast=Toast.makeText(context,"On",Toast.LENGTH_SHORT);
                     toast.show();
+                    Homepage.getInstance().bottom_nav.getMenu().getItem(1).setEnabled(false);
                 }else{
                     Toast toast=Toast.makeText(context,"Off",Toast.LENGTH_SHORT);
                     toast.show();
-
+                    Homepage.getInstance().bottom_nav.getMenu().getItem(1).setEnabled(true);
                 }
             }
         });
@@ -67,13 +78,20 @@ public class Pop extends AppCompatActivity  {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked){
-//                    Toast toast=Toast.makeText(context,"On",Toast.LENGTH_SHORT);
-                     Homepage.getInstance().change_color();
+                   Toast toast=Toast.makeText(context,"On",Toast.LENGTH_SHORT);
+                   toast.show();
+                   HomeFrag.getInstance().Home_fragment.setBackground(getDrawable(R.drawable.gradient_backround_2));
+                   SettingsFrag.getInstance().Settings_fragment.setBackground(getDrawable((R.drawable.gradient_backround_2)));
+                   NotificationsFrag.getInstance().Notifications_fragment.setBackground(getDrawable(R.drawable.gradient_backround_2));
                 }else{
                     Toast toast=Toast.makeText(context,"Off",Toast.LENGTH_SHORT);
                     toast.show();
+                    HomeFrag.getInstance().Home_fragment.setBackground(getDrawable(R.drawable.gradient_background));
+                    SettingsFrag.getInstance().Settings_fragment.setBackground(getDrawable((R.drawable.gradient_background)));
+                    NotificationsFrag.getInstance().Notifications_fragment.setBackground(getDrawable(R.drawable.gradient_background));
 
                 }
+//                saveData();
             }
         });
 
@@ -92,16 +110,26 @@ public class Pop extends AppCompatActivity  {
         int height=dm.heightPixels;
 
         getWindow().setLayout((int)(width*.9),(int)(height*.8));
+
     }
 
-//    public Palette createPaletteAsync(Bitmap bitmap){
-//        Palette.from(bitmap).generate(new Palette.PaletteAsyncListener() {
-//            @Override
-//            public void onGenerated(@Nullable Palette palette) {
-//
-//            }
-//        });
-//    }
+    public static Pop getInstance(){return object3;}
 
+//    public void saveData(){
+//        SharedPreferences sharedPreferences=getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
+//        SharedPreferences.Editor editor=sharedPreferences.edit();
+//
+//        editor.putBoolean(ASWITCH,bSwitch.isChecked());
+//        editor.apply();
+//    }
+//
+//    public void loadData(){
+//        SharedPreferences sharedPreferences=getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
+//        switchonoff=sharedPreferences.getBoolean(ASWITCH,false);
+//    }
+//
+//    public void updateViews(){
+//        bSwitch.setChecked(switchonoff);
+//    }
 
 }

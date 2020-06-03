@@ -16,6 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,6 +34,7 @@ public class NotificationsFrag extends Fragment {
     private ArrayList<Integer> images=new ArrayList<>();
     Myadapter adapter;
     static NotificationsFrag object3;
+    LinearLayout Notifications_fragment;
     int p;
     CheckBox mark_as_read;
 
@@ -43,6 +45,7 @@ public class NotificationsFrag extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View returnView = inflater.inflate(R.layout.frag_notifications,container,false);
         final ListView listView = (ListView) returnView.findViewById(R.id.List_view_nots);
+        Notifications_fragment=(LinearLayout)returnView.findViewById(R.id.Notifications_fragg);
         Button button=(Button)returnView.findViewById(R.id.button2) ;
 //        mark_as_read=(CheckBox)returnView.findViewById(R.id.marker);
         object3=this;
@@ -101,6 +104,8 @@ public class NotificationsFrag extends Fragment {
                     toast.show();
                     return true;
                 case 2:
+                    String toRemove=NotificationsFrag.getInstance().adapter.getItem(NotificationsFrag.getInstance().p);
+                    adapter.remove(toRemove);
                     Toast toast2=Toast.makeText(getActivity(),"Deleted",Toast.LENGTH_SHORT);
                     toast2.show();
                     return true;

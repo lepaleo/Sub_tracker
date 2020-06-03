@@ -4,6 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.content.res.ColorStateList;
 import android.os.Build;
 import android.os.Bundle;
@@ -13,12 +16,14 @@ import android.view.WindowManager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.List;
+
 public class Homepage extends AppCompatActivity {
     final Fragment frag1=new HomeFrag();
     final Fragment frag2=new NotificationsFrag();
     final Fragment frag3=new SettingsFrag();
     Fragment active = frag1;
-    private BottomNavigationView bottom_nav;
+    BottomNavigationView bottom_nav;
     static Homepage obj;
 
     @Override
@@ -43,11 +48,10 @@ public class Homepage extends AppCompatActivity {
             window.setStatusBarColor(getResources().getColor(R.color.mainApp_color));
         }
 
-    }
 
-    public void change_color(){
 
     }
+
 
     public static Homepage getInstance(){
         return obj;
@@ -69,6 +73,7 @@ public class Homepage extends AppCompatActivity {
                     }else if (menuItem.getItemId()==R.id.nav_settings){
                         getSupportFragmentManager().beginTransaction().hide(active).show(frag3).commit();
                         active=frag3;
+
                         return true;
                     }
 
@@ -77,5 +82,10 @@ public class Homepage extends AppCompatActivity {
                     return false;
                 }
             };
+
+//    private boolean isCallable(Intent intent){
+//        List<ResolveInfo> list =getPackageManager().queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY);
+//        return list.size()>0;
+//    }
 
 }

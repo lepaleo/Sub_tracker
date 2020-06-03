@@ -14,6 +14,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 import yuku.ambilwarna.AmbilWarnaDialog;
 
 public class AddSubscription extends AppCompatActivity {
@@ -23,18 +25,23 @@ public class AddSubscription extends AppCompatActivity {
     private EditText subemail;
     private EditText subcard;
     private Button backButton;
-    private Button saveButton;
+     Button saveButton;
     private Button pickcolorButton;
     private Button startdateButton;
     private Button enddateButton;
     private int mDefaultColor;
     TextView StartDate;
     TextView EndDate;
+    static AddSubscription object4;
+    public ArrayList<String> mTitle=new ArrayList<>();
+    public ArrayList<String> mDescription=new ArrayList<>();
+    public ArrayList<Integer> images=new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addsubscription);
+        object4=this;
 
         subname = findViewById(R.id.Subname);
         subprice = findViewById(R.id.Subprice);
@@ -57,6 +64,16 @@ public class AddSubscription extends AppCompatActivity {
                 overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
             }
         });
+
+//        saveButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                mTitle.add("Spotify");
+//                mDescription.add("10/02/20");
+//                images.add(R.drawable.user_icon_pic_4);
+//                finish();
+//            }
+//        });
 
 
         //pick color button
@@ -133,5 +150,9 @@ public class AddSubscription extends AppCompatActivity {
         });
         colorPicker.show();
     }
+
+    public static AddSubscription getInstance(){return object4;}
+
+
 
 }
