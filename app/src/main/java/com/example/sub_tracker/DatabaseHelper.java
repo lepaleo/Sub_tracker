@@ -7,35 +7,39 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
+
+
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final int DATABASE_VERSION = 1;
-    public static final String DATABASE_NAME = "subsDB.db";
+    private static final String DATABASE_NAME = "subsDB.db";
     public static final String TABLE_NAME = "subs_table";
+    public static final String ID = "_id";
     public static final String SUBNAME = "Subname";
-    public static final String ID = "ID";
     public static final String PRICE = "Price";
     public static final String EMAIL = "Email";
     public static final String CARD = "Card";
     public static final String STARTDATE = "StartDate";
     public static final String ENDDATE = "EndDate";
+    public static final String COLOR = "Color";
 
-    public DatabaseHelper(@Nullable Context context) {
+    public DatabaseHelper(@Nullable Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
     //Creating DB
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String createTable = "CREATE TABLE " +
-                TABLE_NAME + "(" +
+        String createTable = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + "(" +
                 ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-                SUBNAME + "TEXT," +
+                SUBNAME + " TEXT," +
                 PRICE + " INTEGER," +
                 EMAIL + " TEXT," +
                 CARD + " TEXT," +
                 STARTDATE + " TEXT," +
-                ENDDATE + " TEXT)" + ")";
+                ENDDATE + " TEXT," +
+                COLOR + " TEXT" + ")";
         db.execSQL(createTable);
     }
     @Override
@@ -53,12 +57,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(CARD, sub.getCard());
         values.put(STARTDATE, sub.getStartdate());
         values.put(ENDDATE, sub.getEnddate());
+        values.put(COLOR, sub.get_color());
         SQLiteDatabase db = this.getWritableDatabase();
         db.insert(TABLE_NAME, null, values);
         db.close();
     }
 
-    //Finding on the DB based on its name
+    public void updateSub(Sub sub){
+        ContentValues values = new ContentValues();
+        values.put(SUBNAME, sub.getSubname());
+        values.put(PRICE, sub.getPrice());
+        values.put(EMAIL, sub.getEmail());
+        values.put(CARD, sub.getCard());
+        values.put(STARTDATE, sub.getStartdate());
+        values.put(ENDDATE, sub.getEnddate());
+       SQLiteDatabase db = this.getWritableDatabase();
+       db.update(TABLE_NAME, values, "_id=" + sub.getID(), null);
+       db.close();
+    }
+
+    // Finding on the DB based on its name
     public Sub findSub(String Subname) {
         String query = "SELECT * FROM " + TABLE_NAME + " WHERE " +
                 SUBNAME + "= '" + Subname + "'";
@@ -74,6 +92,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             sub.setCard(cursor.getString(4));
             sub.setStartdate(cursor.getString(5));
             sub.setEnddate(cursor.getString(6));
+            sub.set_color(cursor.getString(7));
             cursor.close();
         } else {
             sub = null;
@@ -99,6 +118,35 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         db.close();
         return result;
+    }
+
+    public ArrayList<Sub> load(){
+        ArrayList<Sub> subs = new ArrayList<>();
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String query = "SELECT * FROM " + TABLE_NAME;
+        Cursor cursor =
+                db.rawQuery(query, null);
+
+        int rows = cursor.getCount();
+        cursor.moveToFirst();
+
+        for(int i = 0; i < rows; i++){
+            int id = cursor.getInt(0);
+            String name = cursor.getString(1);
+            int price = cursor.getInt(2);
+            String email = cursor.getString(3);
+            String card = cursor.getString(4);
+            String startDate = cursor.getString(5);
+            String endDate = cursor.getString(6);
+            String color = cursor.getString(7);
+            Sub sub = new Sub(id, name, price, email, card, startDate, endDate, color);
+            subs.add(sub);
+            cursor.moveToNext();
+        }
+
+        return subs;
     }
 
 }

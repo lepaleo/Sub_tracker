@@ -9,6 +9,8 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CalendarView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,7 +20,7 @@ public class Calendar extends AppCompatActivity {
     private Button backButton;
     private static final String TAG = "Calendar";
     private CalendarView mCalendarView;
-
+    String price, name, email, card, color, id;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -32,11 +34,26 @@ public class Calendar extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent backactivity = new Intent(Calendar.this, AddSubscription.class);
+                backactivity.putExtra("price", price);
+                backactivity.putExtra("id",id);
+                backactivity.putExtra("name", name);
+                backactivity.putExtra("email", email);
+                backactivity.putExtra("card", card);
+                backactivity.putExtra("color", color);
                 startActivity(backactivity);
                 finish();
                 overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
             }
         });
+
+        final Intent incoming = getIntent();
+        id = incoming.getStringExtra("id");
+        price = incoming.getStringExtra("price");
+        name = incoming.getStringExtra("name");
+        email = incoming.getStringExtra("email");
+        card = incoming.getStringExtra("card");
+        color = incoming.getStringExtra("color");
+        //Toast.makeText(this, price, Toast.LENGTH_SHORT).show();
 
         //pick date
         mCalendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
@@ -44,10 +61,58 @@ public class Calendar extends AppCompatActivity {
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
                 String date = dayOfMonth + "/" + (month+1) +"/" + year;
 
-                Intent intent = new Intent(Calendar.this, AddSubscription.class);
-                intent.putExtra("date", date);
-                startActivity(intent);
-                finish();
+                if(incoming.getStringExtra("edit") == null){
+                    Intent intent = new Intent(Calendar.this, AddSubscription.class);
+                    intent.putExtra("id", id);
+                    intent.putExtra("price", price);
+                    intent.putExtra("name", name);
+                    intent.putExtra("email", email);
+                    intent.putExtra("card", card);
+                    intent.putExtra("color", color);
+
+                    if(incoming.getStringExtra("date1") != null){
+                        intent.putExtra("date1", incoming.getStringExtra("date1"));
+                    }
+                    if(incoming.getStringExtra("date2") != null){
+                        intent.putExtra("date2", incoming.getStringExtra("date2"));
+                    }
+                    if(incoming.getStringExtra("date").equals("startDate")){
+                        intent.putExtra("date1", date);
+                        Toast.makeText(Calendar.this, "Start date is: " + date, Toast.LENGTH_SHORT).show();
+                    }
+                    if(incoming.getStringExtra("date").equals("endDate")){
+                        intent.putExtra("date2", date);
+                        Toast.makeText(Calendar.this, "End date is: " + date, Toast.LENGTH_SHORT).show();
+                    }
+                    startActivity(intent);
+                    finish();
+                }
+                else{
+                    Intent intent = new Intent(Calendar.this, EditSubscription.class);
+                    intent.putExtra("id", id);
+                    intent.putExtra("price", price);
+                    intent.putExtra("name", name);
+                    intent.putExtra("email", email);
+                    intent.putExtra("card", card);
+
+                    if(incoming.getStringExtra("date1") != null){
+                        intent.putExtra("date1", incoming.getStringExtra("date1"));
+                    }
+                    if(incoming.getStringExtra("date2") != null){
+                        intent.putExtra("date2", incoming.getStringExtra("date2"));
+                    }
+                    if(incoming.getStringExtra("date").equals("startDate")){
+                        intent.putExtra("date1", date);
+                        Toast.makeText(Calendar.this, "Start date is: " + date, Toast.LENGTH_SHORT).show();
+                    }
+                    if(incoming.getStringExtra("date").equals("endDate")){
+                        intent.putExtra("date2", date);
+                        Toast.makeText(Calendar.this, "End date is: " + date, Toast.LENGTH_SHORT).show();
+                    }
+                    startActivity(intent);
+                    finish();
+                }
+
             }
         });
 

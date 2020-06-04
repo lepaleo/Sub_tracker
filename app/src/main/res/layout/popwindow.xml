@@ -40,6 +40,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="Add"
+            android:layout_gravity="center"
             android:background="@drawable/round_button"
 
             />
@@ -55,7 +56,7 @@
 
     <RatingBar
         android:id="@+id/ratingBar"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
         android:focusable="true"

@@ -7,7 +7,7 @@
 
 <LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:orientation="vertical">
 
     <TextView
@@ -15,18 +15,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
+        android:layout_marginBottom="10dp"
         android:text="My Subscriptions"
         android:textColor="@android:color/white"
         android:textSize="30dp" />
 
-    <ListView
-        android:id="@+id/List_view_subs"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/subs"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         />
 </LinearLayout>
-
-
 
 
     <Button
@@ -39,7 +38,7 @@
         android:layout_gravity="bottom|right"
         android:layout_marginEnd="18dp"
         android:layout_marginRight="18dp"
-        android:layout_marginBottom="70dp"
+        android:layout_marginBottom="18dp"
         android:background="@drawable/add_rounded_button"
         android:text="+"
         android:textColor="@color/ic_launcher1_background"

@@ -216,44 +216,6 @@
 
 
         <TextView
-            android:id="@+id/textView8"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="15dp"
-            android:text="Color"
-            android:textColor="#C5000000"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.098"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.704" />
-
-        <Button
-            android:id="@+id/pickcolorbutton"
-            android:layout_width="fill_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="2dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginLeft="20dp"
-            android:background="@drawable/actualborders"
-            android:foreground="?attr/selectableItemBackground"
-            android:text="Pick a color"
-            android:textAllCaps="false"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.495"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView8"
-            app:layout_constraintVertical_bias="0.0" />
-
-
-        <TextView
             android:id="@+id/textView10"
             android:rotation="180"
             android:layout_width="fill_parent"
@@ -329,7 +291,7 @@
 
         <Button
             android:id="@+id/savebutton"
-            android:layout_width="186dp"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
@@ -339,7 +301,7 @@
             android:background="@drawable/actualborders"
             android:foreground="?attr/selectableItemBackground"
             android:drawableLeft="@drawable/ic_save_black_24dp"
-            android:text="Save subscription"
+            android:text="Save Edit"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.942"
             app:layout_constraintStart_toEndOf="@+id/backbutton"

@@ -19,7 +19,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/Maintext_list"
+            android:id="@+id/notif_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Sub Name"
@@ -29,7 +29,7 @@
             android:textSize="20sp"
             />
         <TextView
-            android:id="@+id/Subtext_list"
+            android:id="@+id/notif_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="hh/mm/ss"

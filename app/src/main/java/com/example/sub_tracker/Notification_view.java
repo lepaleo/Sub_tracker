@@ -21,7 +21,7 @@ public class Notification_view extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.notification_view);
         back_button=(Button)findViewById(R.id.back_button_not);
-        delete_button=(Button)findViewById(R.id.delete_not);
+       // delete_button=(Button)findViewById(R.id.delete_not);
         sub_price=(TextView)findViewById(R.id.sub_price);
         final Context context=getApplicationContext();
         back_button.setOnClickListener(new View.OnClickListener() {
@@ -31,16 +31,7 @@ public class Notification_view extends AppCompatActivity {
             }
         });
 
-        delete_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String toRemove=NotificationsFrag.getInstance().adapter.getItem(NotificationsFrag.getInstance().p);
-                NotificationsFrag.getInstance().adapter.remove(toRemove);
-                Toast toast=Toast.makeText(context,"Deleted",Toast.LENGTH_SHORT);
-                toast.show();
-                finish();
-            }
-        });
+
 
     }
 

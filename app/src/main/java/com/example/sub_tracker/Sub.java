@@ -8,8 +8,29 @@ public class Sub {
     private String _card;
     private String _startdate;
     private String _enddate;
+    private String _color;
 
-    public Sub() {
+    public Sub() {}
+
+    public Sub(int id, String subname, int price, String email, String card, String startdate, String enddate, String color) {
+        this._id = id;
+        this._subname = subname;
+        this._price = price;
+        this._email = email;
+        this._card = card;
+        this._startdate = startdate;
+        this._enddate = enddate;
+        this._color = color;
+    }
+
+    public Sub(String subname, int price, String email, String card, String startdate, String enddate, String color) {
+        this._subname = subname;
+        this._price = price;
+        this._email = email;
+        this._card = card;
+        this._startdate = startdate;
+        this._enddate = enddate;
+        this._color = color;
     }
 
     public Sub(int id, String subname, int price, String email, String card, String startdate, String enddate) {
@@ -22,14 +43,6 @@ public class Sub {
         this._enddate = enddate;
     }
 
-    public Sub(String subname, int price, String email, String card, String startdate, String enddate) {
-        this._subname = subname;
-        this._price = price;
-        this._email = email;
-        this._card = card;
-        this._startdate = startdate;
-        this._enddate = enddate;
-    }
 
     public void setID(int id) {
         this._id = id;
@@ -86,4 +99,15 @@ public class Sub {
     public String getEnddate() {
         return this._enddate;
     }
+
+
+    public String get_color() {
+        return _color;
+    }
+
+    public void set_color(String _color) {
+        this._color = _color;
+    }
+
+
 }

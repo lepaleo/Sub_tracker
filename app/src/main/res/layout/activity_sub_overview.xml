@@ -65,6 +65,7 @@
         android:textColor="#C5000000"
         android:textSize="20sp"
         android:textStyle="bold"
+        android:layout_marginTop="15dp"
         app:layout_constraintBottom_toTopOf="@+id/textView6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.097"
@@ -93,6 +94,44 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5"
         app:layout_constraintVertical_bias="0.002" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:text="Name"
+            android:textColor="#C5000000"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            app:layout_constraintBottom_toTopOf="@+id/textView5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.099"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/backbutton"
+            app:layout_constraintVertical_bias="0.294" />
+
+        <TextView
+            android:id="@+id/Subname"
+            android:layout_width="fill_parent"
+            android:layout_height="60dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/borders"
+            android:ems="10"
+            android:gravity="center"
+            android:inputType="textCapSentences"
+            android:textColor="#000000"
+            android:textColorHint="#A8A5A5A5"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.504"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView4"
+            app:layout_constraintVertical_bias="0.001" />
 
 
     <TextView
