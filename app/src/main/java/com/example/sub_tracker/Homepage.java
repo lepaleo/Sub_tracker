@@ -25,6 +25,7 @@ public class Homepage extends AppCompatActivity {
     Fragment active = frag1;
     BottomNavigationView bottom_nav;
     static Homepage obj;
+    private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,12 +33,22 @@ public class Homepage extends AppCompatActivity {
         setContentView(R.layout.activity_homepage2);
         obj=this;
 
+        intent = getIntent();
+
+        /*
 
         getSupportFragmentManager().beginTransaction().add(R.id.frag_contain,frag3,"3").hide(frag3).commit();
         getSupportFragmentManager().beginTransaction().add(R.id.frag_contain,frag2,"2").hide(frag2).commit();
         getSupportFragmentManager().beginTransaction().add(R.id.frag_contain,frag1,"1").commit();
         bottom_nav =findViewById(R.id.bottom_nav_bar);
         bottom_nav.setOnNavigationItemSelectedListener(nav_listener);
+
+         */
+
+        bottom_nav =findViewById(R.id.bottom_nav_bar);
+        bottom_nav.setOnNavigationItemSelectedListener(nav_listener);
+        getSupportFragmentManager().beginTransaction().replace(R.id.frag_contain, new HomeFrag()).commit();
+
 
 
         //change notificaton bar color
@@ -61,25 +72,26 @@ public class Homepage extends AppCompatActivity {
             new BottomNavigationView.OnNavigationItemSelectedListener() {
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                    Fragment active_frag = null;
 
                     if(menuItem.getItemId()==R.id.nav_home){
-                        getSupportFragmentManager().beginTransaction().hide(active).show(frag1).commit();
-                        active=frag1;
-                        return true;
+                        active_frag = new HomeFrag();
+                        //getSupportFragmentManager().beginTransaction().replace(R.id.frag_contain,homeFrag).commit();
+                        // active=frag1;
                     }else if (menuItem.getItemId()==R.id.nav_notifications){
-                        getSupportFragmentManager().beginTransaction().hide(active).show(frag2).commit();
-                        active=frag2;
-                        return true;
+                        //getSupportFragmentManager().beginTransaction().hide(active).show(frag2).commit();
+                        //  active=frag2;
+                        active_frag = new NotificationsFrag();
                     }else if (menuItem.getItemId()==R.id.nav_settings){
-                        getSupportFragmentManager().beginTransaction().hide(active).show(frag3).commit();
-                        active=frag3;
-
-                        return true;
+                        // getSupportFragmentManager().beginTransaction().hide(active).show(frag3).commit();
+                        // active=frag3;
+                        active_frag = new SettingsFrag();
                     }
 
+                    getSupportFragmentManager().beginTransaction().replace(R.id.frag_contain, active_frag).commit();
 
 
-                    return false;
+                    return true;
                 }
             };
 

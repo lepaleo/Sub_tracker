@@ -7,11 +7,13 @@ import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -21,11 +23,13 @@ public class SubsAdapter extends RecyclerView.Adapter<SubsAdapter.ViewHolder> {
     private ArrayList<Sub> list_subs;
     private Context context;
     private Activity activity;
+    DatabaseHelper db;
 
     public SubsAdapter(ArrayList<Sub> list_subs, Context context, Activity activity){
         this.list_subs = list_subs;
         this.context = context;
         this.activity = activity;
+        db = new DatabaseHelper(context, "subsDB.db", null, 1);
     }
 
     @NonNull
@@ -42,10 +46,15 @@ public class SubsAdapter extends RecyclerView.Adapter<SubsAdapter.ViewHolder> {
 
         holder.sub_name.setText(sub.getSubname());
         holder.sub_price.setText(String.valueOf(sub.getPrice()));
-        if(sub.get_color() != null)
-            holder.list.setBackgroundColor(Color.parseColor(sub.get_color()));
 
-        holder.list.setOnClickListener(new View.OnClickListener() {
+        if(sub.get_color() != null)
+            holder.subs_list.setCardBackgroundColor(Color.parseColor(sub.get_color()));
+
+        if(sub.getEnddate() == null){
+            holder.notification.setVisibility(View.GONE);
+        }
+
+        holder.subs_list.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
               //  Toast.makeText(context, "SUB CLICKED NAME: " + sub.getSubname(), Toast.LENGTH_SHORT).show();
@@ -62,6 +71,21 @@ public class SubsAdapter extends RecyclerView.Adapter<SubsAdapter.ViewHolder> {
             }
         });
 
+        holder.notification.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!sub.getNotif().equals("true")){
+                    sub.setNotif("true");
+                    db.updateSub(sub);
+                    Toast.makeText(context, "Notification enabled", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Toast.makeText(context, "Notification already enabled", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+
 
     }
 
@@ -74,7 +98,9 @@ public class SubsAdapter extends RecyclerView.Adapter<SubsAdapter.ViewHolder> {
 
         View view;
         TextView sub_name, sub_price;
-        LinearLayout list;
+        CardView subs_list;
+        LinearLayout sub_click;
+        ImageButton notification;
 
         public ViewHolder(View view){
             super(view);
@@ -82,7 +108,9 @@ public class SubsAdapter extends RecyclerView.Adapter<SubsAdapter.ViewHolder> {
 
             sub_name = view.findViewById(R.id.sub_name);
             sub_price = view.findViewById(R.id.sub_price);
-            list = view.findViewById(R.id.subs_list);
+            subs_list = view.findViewById(R.id.subs_list);
+            notification = view.findViewById(R.id.notification);
+            sub_click = view.findViewById(R.id.sub_click);
         }
     }
 }

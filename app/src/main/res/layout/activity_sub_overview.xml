@@ -10,41 +10,46 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".SubOverview">
+        tools:context=".SubOverview"
+        android:paddingTop="15dp">
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal">
-
-
             <Button
                 android:id="@+id/backbutton"
                 android:layout_width="37dp"
                 android:layout_height="34dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="16dp"
                 android:background="@drawable/ic_arrow_back_black_24dp"
                 android:foreground="?attr/selectableItemBackground"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.02"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"/>
 
 
             <TextView
                 android:id="@+id/textView13"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="25dp"
-                android:layout_marginRight="48dp"
                 android:gravity="center"
                 android:text="SUBSCRIPTION"
                 android:textColor="#C5000000"
                 android:textSize="21sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/editbutton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/actualborders"
+                android:drawableLeft="@drawable/ic_settings_black_24dp"
+                android:foreground="?attr/selectableItemBackground"
+                android:text="Edit"
+                android:paddingLeft="10dp"
+                android:layout_marginRight="10dp"/>
         </LinearLayout>
 
 
@@ -304,22 +309,18 @@
 
 
         <Button
-            android:id="@+id/editbutton"
+            android:id="@+id/deleteBtn"
             android:layout_width="186dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="40dp"
-            android:layout_marginLeft="80dp"
-            android:layout_marginRight="80dp"
+            android:layout_margin="50dp"
             android:background="@drawable/actualborders"
+            android:drawableLeft="@drawable/ic_delete_black_24dp"
             android:foreground="?attr/selectableItemBackground"
-            android:drawableLeft="@drawable/ic_settings_black_24dp"
-            android:text="Edit subscription"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.942"
-            app:layout_constraintStart_toEndOf="@+id/editbutton"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textAlignment="center"
+            android:text="Delete"
+            android:paddingRight="25dp"
+            />
 
 
     </LinearLayout>

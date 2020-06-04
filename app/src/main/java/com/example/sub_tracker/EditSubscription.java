@@ -89,7 +89,7 @@ public class EditSubscription extends AppCompatActivity {
                 Intent backactivity = new Intent(EditSubscription.this, Homepage.class);
                 startActivity(backactivity);
                 finish();
-              //  overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
+                overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
             }
         });
 

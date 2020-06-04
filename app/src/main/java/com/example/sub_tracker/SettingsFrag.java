@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.text.TextWatcher;
@@ -35,7 +36,7 @@ public class SettingsFrag extends Fragment {
     private Button change_button;
     private TextView choose_text;
     static SettingsFrag object;
-    LinearLayout Settings_fragment;
+    RelativeLayout Settings_fragment;
     Intent intent2;
 
 
@@ -45,7 +46,7 @@ public class SettingsFrag extends Fragment {
 
         View returnView = inflater.inflate(R.layout.frag_settings,container,false);
         img=(ImageView)returnView.findViewById(R.id.Profile_pic);
-        Settings_fragment=(LinearLayout)returnView.findViewById(R.id.Setting_fragg);
+        Settings_fragment= returnView.findViewById(R.id.Setting_fragg);
         object=this;
         input_set=(EditText) returnView.findViewById(R.id.Input_settings) ;
         change_button=(Button)returnView.findViewById(R.id.Change_name_button);

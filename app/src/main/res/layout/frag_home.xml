@@ -14,9 +14,10 @@
         android:id="@+id/textView5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginBottom="10dp"
+        android:padding="15dp"
+        android:layout_marginBottom="15dp"
         android:text="My Subscriptions"
+        android:textStyle="bold"
         android:textColor="@android:color/white"
         android:textSize="30dp" />
 

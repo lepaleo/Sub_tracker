@@ -29,24 +29,40 @@ public class Calendar extends AppCompatActivity {
         backButton = findViewById(R.id.calendarbackbutton);
         mCalendarView = (CalendarView) findViewById(R.id.calendarView);
 
+        final Intent incoming = getIntent();
+
         //backbutton back to home onclick
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent backactivity = new Intent(Calendar.this, AddSubscription.class);
-                backactivity.putExtra("price", price);
-                backactivity.putExtra("id",id);
-                backactivity.putExtra("name", name);
-                backactivity.putExtra("email", email);
-                backactivity.putExtra("card", card);
-                backactivity.putExtra("color", color);
-                startActivity(backactivity);
-                finish();
-                overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
+                if(incoming.getStringExtra("edit") == null) {
+                    Intent backactivity = new Intent(Calendar.this, AddSubscription.class);
+                    backactivity.putExtra("price", price);
+                    backactivity.putExtra("id", id);
+                    backactivity.putExtra("name", name);
+                    backactivity.putExtra("email", email);
+                    backactivity.putExtra("card", card);
+                    backactivity.putExtra("color", color);
+                    startActivity(backactivity);
+                    finish();
+                    overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+                }
+                else{
+                    Intent backactivity = new Intent(Calendar.this, EditSubscription.class);
+                    backactivity.putExtra("price", price);
+                    backactivity.putExtra("id", id);
+                    backactivity.putExtra("name", name);
+                    backactivity.putExtra("email", email);
+                    backactivity.putExtra("card", card);
+                    backactivity.putExtra("color", color);
+                    startActivity(backactivity);
+                    finish();
+                    overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+                }
             }
         });
 
-        final Intent incoming = getIntent();
+
         id = incoming.getStringExtra("id");
         price = incoming.getStringExtra("price");
         name = incoming.getStringExtra("name");

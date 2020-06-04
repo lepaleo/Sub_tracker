@@ -1,12 +1,16 @@
 package com.example.sub_tracker;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -25,12 +29,17 @@ class NotifAdapter extends RecyclerView.Adapter<NotifAdapter.ViewHolder> {
 
     Context context;
     private ArrayList<Sub> notifs;
+    private Activity activity;
+
+    DatabaseHelper db;
 
 
-    public NotifAdapter(ArrayList<Sub> notifs, Context c){
+    public NotifAdapter(ArrayList<Sub> notifs, Context c, Activity activity){
         this.context=c;
         this.notifs = notifs;
+        this.activity = activity;
 
+        db = new DatabaseHelper(context, "subsDB.db", null, 1);
     }
 
     @NonNull
@@ -42,26 +51,37 @@ class NotifAdapter extends RecyclerView.Adapter<NotifAdapter.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Sub sub = notifs.get(position);
+    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
+        final Sub sub = notifs.get(position);
 
-        try {
-            Date date1 = new SimpleDateFormat("dd/MM/yyyy").parse(sub.getStartdate());
-            Date date2 = new SimpleDateFormat("dd/MM/yyyy").parse(sub.getEnddate());
-            long milliseconds = date2.getTime() - date1.getTime();
+        holder.notif_name.setText(sub.getSubname());
+        holder.notif_date.setText("Expiring in: " + sub.getExpire() + " days");
 
-            long days = milliseconds / (1000 * 60 * 60 * 24);
-
-
-            if(days <= 5){
-                holder.notif_name.setText(sub.getSubname());
-                holder.notif_date.setText(String.valueOf(days));
+        holder.notif_item.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, Notification_view.class);
+                intent.putExtra("price", String.valueOf(sub.getPrice()));
+                intent.putExtra("position", String.valueOf(position));
+                activity.startActivity(intent);
             }
+        });
 
-
-        } catch (ParseException e) {
-            e.printStackTrace();
+        for(int i = 0; i < sub.getExpire(); i++){
+            ImageView imageView = new ImageView(context);
+            imageView.setBackgroundResource(R.drawable.ic_star_black_24dp);
+            holder.stars.addView(imageView);
         }
+
+        holder.deleteBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                notifs.remove(position);
+                sub.setNotif("false");
+                db.updateSub(sub);
+                notifyDataSetChanged();
+            }
+        });
 
     }
 
@@ -75,7 +95,8 @@ class NotifAdapter extends RecyclerView.Adapter<NotifAdapter.ViewHolder> {
 
         View view;
         TextView notif_name, notif_date;
-
+        LinearLayout notif_item, stars;
+        ImageButton deleteBtn;
 
         public ViewHolder(View view){
             super(view);
@@ -83,6 +104,9 @@ class NotifAdapter extends RecyclerView.Adapter<NotifAdapter.ViewHolder> {
 
             notif_name = view.findViewById(R.id.notif_name);
             notif_date = view.findViewById(R.id.notif_date);
+            notif_item = view.findViewById(R.id.notif_item);
+            stars = view.findViewById(R.id.stars);
+            deleteBtn = view.findViewById(R.id.deleteBtn);
 
         }
     }

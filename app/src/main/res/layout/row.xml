@@ -1,51 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+
+<androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    >
-
-    <ImageView
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:src="@drawable/ic_notifications_black_24dp"
-        android:id="@+id/Image_nots"
-        />
+    android:layout_marginBottom="15dp"
+    app:cardElevation="10dp"
+    app:cardCornerRadius="10dp"
+    android:layout_marginLeft="7dp"
+    android:layout_marginRight="7dp">
 
     <LinearLayout
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="horizontal"
+        android:background="@color/mainApp_color"
+        android:padding="10dp"
+        >
 
-        <TextView
-            android:id="@+id/notif_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Sub Name"
-            android:textColor="#000"
-            android:textStyle="bold"
-            android:layout_margin="5dp"
-            android:textSize="20sp"
-            />
-        <TextView
-            android:id="@+id/notif_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="hh/mm/ss"
-            android:layout_margin="5dp"
-            android:textSize="15sp"
-            />
+
 
         <ImageView
-            android:id="@+id/star_mark"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:src="@drawable/ic_star_black_24dp"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:src="@drawable/ic_notifications_black_24dp"
+            android:id="@+id/Image_nots"
             />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/notif_item"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/notif_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="Sub Name"
+                    android:textColor="#000"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+
+                <TextView
+                    android:id="@+id/notif_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="hh/mm/ss"
+                    android:textSize="15sp" />
+
+
+                <LinearLayout
+                    android:id="@+id/stars"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <ImageButton
+                android:id="@+id/deleteBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_delete_black_24dp"
+                android:layout_gravity="center_vertical"
+                android:background="@color/Transparent"/>
+
+        </LinearLayout>
 
 
     </LinearLayout>
 
-
-</LinearLayout>
+</androidx.cardview.widget.CardView>

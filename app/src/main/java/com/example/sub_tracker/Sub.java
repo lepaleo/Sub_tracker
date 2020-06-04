@@ -9,10 +9,12 @@ public class Sub {
     private String _startdate;
     private String _enddate;
     private String _color;
+    private long expire;
+    private String notif = "true";
 
     public Sub() {}
 
-    public Sub(int id, String subname, int price, String email, String card, String startdate, String enddate, String color) {
+    public Sub(int id, String subname, int price, String email, String card, String startdate, String enddate, String color, String notif) {
         this._id = id;
         this._subname = subname;
         this._price = price;
@@ -21,6 +23,7 @@ public class Sub {
         this._startdate = startdate;
         this._enddate = enddate;
         this._color = color;
+        this.notif = notif;
     }
 
     public Sub(String subname, int price, String email, String card, String startdate, String enddate, String color) {
@@ -43,6 +46,21 @@ public class Sub {
         this._enddate = enddate;
     }
 
+    public long getExpire() {
+        return expire;
+    }
+
+    public void setExpire(long expire) {
+        this.expire = expire;
+    }
+
+    public String getNotif() {
+        return notif;
+    }
+
+    public void setNotif(String notif) {
+        this.notif = notif;
+    }
 
     public void setID(int id) {
         this._id = id;

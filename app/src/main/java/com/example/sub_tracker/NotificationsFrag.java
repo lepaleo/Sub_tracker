@@ -29,23 +29,25 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+
+import static java.lang.Math.abs;
 
 public class NotificationsFrag extends Fragment {
 
-    private ArrayList<String> mTitle=new ArrayList<>();
-    private ArrayList<String> mDescription=new ArrayList<>();
-    private ArrayList<Integer> images=new ArrayList<>();
     NotifAdapter adapter;
     static NotificationsFrag object3;
-    int p;
-    CheckBox mark_as_read;
-
-    private ArrayList<Sub> notifs;
+    private ArrayList<Sub> notifs, notifsFinal;
     private RecyclerView notifs_view;
-    LinearLayout Notifications_fragment;
+    RelativeLayout Notifications_fragment;
 
     DatabaseHelper db;
+    private int position;
 
 
 
@@ -54,7 +56,7 @@ public class NotificationsFrag extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View returnView = inflater.inflate(R.layout.frag_notifications,container,false);
 
-        Notifications_fragment = (LinearLayout) returnView.findViewById(R.id.Notifications_fragg);
+        Notifications_fragment = returnView.findViewById(R.id.Notifications_fragg);
 
         db = new DatabaseHelper(requireContext(), "subsDB.db", null, 1);
 
@@ -62,9 +64,33 @@ public class NotificationsFrag extends Fragment {
         object3=this;
 
         notifs_view.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false));
-
+        notifsFinal = new ArrayList<>();
         notifs = db.load();
-        adapter = new NotifAdapter(notifs, requireContext());
+
+        for(Sub x: notifs){
+            if(x.getEnddate() != null){
+                try {
+                    Date todayDate = Calendar.getInstance().getTime();
+                    SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+                    String todayString = formatter.format(todayDate);
+
+                    Date today = new SimpleDateFormat("dd/MM/yyyy").parse(todayString);
+                    Date date2 = new SimpleDateFormat("dd/MM/yyyy").parse(x.getEnddate());
+
+                    long milliseconds = abs(date2.getTime() - today.getTime());
+                    long days = milliseconds / (1000 * 60 * 60 * 24);
+
+                    if(days <= 5 && x.getNotif().equals("true")){
+                        x.setExpire(days);
+                        notifsFinal.add(x);
+                    }
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        adapter = new NotifAdapter(notifsFinal, requireContext(), requireActivity());
 
         notifs_view.setAdapter(adapter);
 

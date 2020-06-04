@@ -23,6 +23,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String STARTDATE = "StartDate";
     public static final String ENDDATE = "EndDate";
     public static final String COLOR = "Color";
+    public static final String NOTIF = "Notif";
 
     public DatabaseHelper(@Nullable Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -39,7 +40,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 CARD + " TEXT," +
                 STARTDATE + " TEXT," +
                 ENDDATE + " TEXT," +
-                COLOR + " TEXT" + ")";
+                COLOR + " TEXT," +
+                NOTIF + " TEXT" + ")";
         db.execSQL(createTable);
     }
     @Override
@@ -58,6 +60,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(STARTDATE, sub.getStartdate());
         values.put(ENDDATE, sub.getEnddate());
         values.put(COLOR, sub.get_color());
+        values.put(NOTIF, sub.getNotif());
         SQLiteDatabase db = this.getWritableDatabase();
         db.insert(TABLE_NAME, null, values);
         db.close();
@@ -71,6 +74,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(CARD, sub.getCard());
         values.put(STARTDATE, sub.getStartdate());
         values.put(ENDDATE, sub.getEnddate());
+        values.put(NOTIF, sub.getNotif());
        SQLiteDatabase db = this.getWritableDatabase();
        db.update(TABLE_NAME, values, "_id=" + sub.getID(), null);
        db.close();
@@ -93,6 +97,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             sub.setStartdate(cursor.getString(5));
             sub.setEnddate(cursor.getString(6));
             sub.set_color(cursor.getString(7));
+            sub.setNotif(cursor.getString(8));
             cursor.close();
         } else {
             sub = null;
@@ -102,22 +107,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     //Delete from DB
-    public boolean deleteSub(String Subname) {
-        boolean result = false;
-        String query = "SELECT * FROM " + TABLE_NAME + " WHERE " +
-                SUBNAME + " = '" + Subname + "'";
+    public boolean deleteSub(int id) {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery(query, null);
-        Sub sub = new Sub();
-        if (cursor.moveToFirst()) {
-            sub.setID(Integer.parseInt(cursor.getString(0)));
-            db.delete(Subname, ID + " = ?",
-                    new String[] { String.valueOf(sub.getID()) });
-            cursor.close();
-            result = true;
-        }
-        db.close();
-        return result;
+        return db.delete(TABLE_NAME, ID + "=" + id, null) > 0;
     }
 
     public ArrayList<Sub> load(){
@@ -141,7 +133,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             String startDate = cursor.getString(5);
             String endDate = cursor.getString(6);
             String color = cursor.getString(7);
-            Sub sub = new Sub(id, name, price, email, card, startDate, endDate, color);
+            String notif = cursor.getString(8);
+            Sub sub = new Sub(id, name, price, email, card, startDate, endDate, color, notif);
             subs.add(sub);
             cursor.moveToNext();
         }

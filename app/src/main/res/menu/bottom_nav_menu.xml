@@ -10,7 +10,7 @@
         android:id="@+id/nav_notifications"
         android:enabled="true"
         android:icon="@drawable/ic_notifications_black_24dp"
-        android:title="Not/cations"/>
+        android:title="Reminders"/>
 
 
 
