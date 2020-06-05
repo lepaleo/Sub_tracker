@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -15,13 +16,36 @@ import org.w3c.dom.Text;
 
 public class Welcomepage extends AppCompatActivity {
     private static int SPLASH_TIME_OUT=2500;
+    private String username, usernameCheck;
     String value;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcomepage);
+        TextView textView2 = (TextView) findViewById(R.id.textView2);
 
+        SharedPreferences shared = getSharedPreferences("prefs", MODE_PRIVATE);
+        usernameCheck = shared.getString("username", "");
+
+        if(usernameCheck != null){
+            textView2.setText("Welcome back\n" + usernameCheck);
+        }
+
+        Intent intent = getIntent();
+
+        if (intent.getStringExtra("userkey") != null){
+            value = intent.getStringExtra("userkey");
+            //Username use1 = new Username();
+            textView2.setText("WELCOME\n" + value);
+            SharedPreferences.Editor editor = shared.edit();
+            editor.putString("username", value);
+            editor.commit();
+        }
+
+        //change notificaton bar color
         if (Build.VERSION.SDK_INT >= 21) {
             Window window = getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
@@ -29,13 +53,6 @@ public class Welcomepage extends AppCompatActivity {
             window.setStatusBarColor(getResources().getColor(R.color.mainApp_color));
         }
 
-        Bundle extras = getIntent().getExtras();
-        if (extras != null){
-            TextView textView2 = (TextView) findViewById(R.id.textView2);
-            value = extras.getString("userkey");
-            Username use1 = new Username();
-            textView2.setText("WELCOME\n" + Loginpage.getInstance().Username2);
-        }
 
         // Intent to go to the next activity with a splash timeout
         new Handler().postDelayed(new Runnable(){

@@ -69,8 +69,8 @@ class NotifAdapter extends RecyclerView.Adapter<NotifAdapter.ViewHolder> {
 
         for(int i = 0; i < sub.getExpire(); i++){
             ImageView imageView = new ImageView(context);
-            imageView.setBackgroundResource(R.drawable.ic_star_black_24dp);
-            holder.stars.addView(imageView);
+            imageView.setBackgroundResource(R.drawable.ic_today_black_24dp);
+            holder.days.addView(imageView);
         }
 
         holder.deleteBtn.setOnClickListener(new View.OnClickListener() {
@@ -95,7 +95,7 @@ class NotifAdapter extends RecyclerView.Adapter<NotifAdapter.ViewHolder> {
 
         View view;
         TextView notif_name, notif_date;
-        LinearLayout notif_item, stars;
+        LinearLayout notif_item, days;
         ImageButton deleteBtn;
 
         public ViewHolder(View view){
@@ -105,7 +105,7 @@ class NotifAdapter extends RecyclerView.Adapter<NotifAdapter.ViewHolder> {
             notif_name = view.findViewById(R.id.notif_name);
             notif_date = view.findViewById(R.id.notif_date);
             notif_item = view.findViewById(R.id.notif_item);
-            stars = view.findViewById(R.id.stars);
+            days = view.findViewById(R.id.days);
             deleteBtn = view.findViewById(R.id.deleteBtn);
 
         }

@@ -35,7 +35,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String createTable = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + "(" +
                 ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                 SUBNAME + " TEXT," +
-                PRICE + " INTEGER," +
+                PRICE + " REAL," +
                 EMAIL + " TEXT," +
                 CARD + " TEXT," +
                 STARTDATE + " TEXT," +
@@ -91,7 +91,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             cursor.moveToFirst();
             sub.setID(Integer.parseInt(cursor.getString(0)));
             sub.setSubname(cursor.getString(1));
-            sub.setPrice(Integer.parseInt(cursor.getString(2)));
+            sub.setPrice(Double.parseDouble(cursor.getString(2)));
             sub.setEmail(cursor.getString(3));
             sub.setCard(cursor.getString(4));
             sub.setStartdate(cursor.getString(5));
@@ -127,7 +127,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         for(int i = 0; i < rows; i++){
             int id = cursor.getInt(0);
             String name = cursor.getString(1);
-            int price = cursor.getInt(2);
+            double price = cursor.getDouble(2);
             String email = cursor.getString(3);
             String card = cursor.getString(4);
             String startDate = cursor.getString(5);

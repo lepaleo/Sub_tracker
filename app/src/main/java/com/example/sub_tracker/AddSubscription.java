@@ -177,8 +177,6 @@ public class AddSubscription extends AppCompatActivity {
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //clickable only if name and price are filled
-                //save db
                 newSub(v);
                 Intent intent = new Intent(AddSubscription.this, Homepage.class);
                 startActivity(intent);
@@ -208,14 +206,12 @@ public class AddSubscription extends AppCompatActivity {
                 strColor = String.format("#%06X", 0xFFFFFF & mDefaultColor);
                 Toast.makeText(AddSubscription.this, "Color selected: " + strColor, Toast.LENGTH_SHORT).show();
                 pickcolorButton.setBackgroundColor(mDefaultColor);
-
-                //save color to set at recyclerview item
             }
         });
         colorPicker.show();
     }
 
-    //add when save is clicked
+    //add to db when save is clicked
     public void newSub (View v) {
         db = new DatabaseHelper(this, "subsDB.db", null, 1);
         String Subname = subname.getText().toString();
@@ -225,7 +221,7 @@ public class AddSubscription extends AppCompatActivity {
 
             Sub found = db.findSub(subname.getText().toString());
             if (found == null){
-                Sub sub = new Sub(Subname, Integer.parseInt(Subprice), subemail.getText().toString(), subcard.getText().toString(), startdate, enddate, strColor);
+                Sub sub = new Sub(Subname, Double.parseDouble(Subprice), subemail.getText().toString(), subcard.getText().toString(), startdate, enddate, strColor);
                 db.addSub(sub);
                 Toast.makeText(AddSubscription.this,"Added",Toast.LENGTH_SHORT).show();
                 subname.setText("");

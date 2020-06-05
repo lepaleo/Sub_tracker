@@ -148,13 +148,9 @@ public class EditSubscription extends AppCompatActivity {
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //clickable only if name and price are filled
-                //save db
                 Intent intent = new Intent(EditSubscription.this, Homepage.class);
                 startActivity(intent);
-                Toast.makeText(EditSubscription.this, "StartDate: "+ startDate, Toast.LENGTH_SHORT).show();
-                Toast.makeText(EditSubscription.this, "EndDate: "+ endDate, Toast.LENGTH_SHORT).show();
-                Sub sub = new Sub(Integer.parseInt(id), subname.getText().toString(), Integer.parseInt(subprice.getText().toString()), subemail.getText().toString(), subcard.getText().toString(),startDate, endDate);
+                Sub sub = new Sub(Integer.parseInt(id), subname.getText().toString(), Double.parseDouble(subprice.getText().toString()), subemail.getText().toString(), subcard.getText().toString(),startDate, endDate);
                 db.updateSub(sub);
                 finish();
             }
@@ -179,5 +175,4 @@ public class EditSubscription extends AppCompatActivity {
         finish();
     }
 
-    //
 }

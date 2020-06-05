@@ -77,10 +77,10 @@ public class NotificationsFrag extends Fragment {
                     Date today = new SimpleDateFormat("dd/MM/yyyy").parse(todayString);
                     Date date2 = new SimpleDateFormat("dd/MM/yyyy").parse(x.getEnddate());
 
-                    long milliseconds = abs(date2.getTime() - today.getTime());
+                    long milliseconds = date2.getTime() - today.getTime();
                     long days = milliseconds / (1000 * 60 * 60 * 24);
 
-                    if(days <= 5 && x.getNotif().equals("true")){
+                    if(days <= 5 && days >= 0 && x.getNotif().equals("true")){
                         x.setExpire(days);
                         notifsFinal.add(x);
                     }

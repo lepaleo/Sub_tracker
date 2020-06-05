@@ -47,7 +47,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:text="Sub Name"
-                    android:textColor="#000"
+                    android:textColor="#f0f0f0"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -58,11 +58,12 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:text="hh/mm/ss"
-                    android:textSize="15sp" />
+                    android:textSize="15sp"
+                    android:textColor="#f0f0f0"/>
 
 
                 <LinearLayout
-                    android:id="@+id/stars"
+                    android:id="@+id/days"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
